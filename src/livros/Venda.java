@@ -1,32 +1,39 @@
 package livros;
 
-import java.lang.reflect.Array;
 import java.util.LinkedList;
 
 public class Venda {
     private LinkedList<Livro> livros;
-    private double numVendas;
     private int numero;
     private String cliente;
     private double valor;
 
     public Venda(int numero, String cliente) {
-        this.livros = new LinkedList<Livro>();
-        this.numVendas = this.livros.size();
+        this.livros = new LinkedList<>();
         this.numero = numero;
         this.cliente = cliente;
         this.valor = 0;
     }
 
-    public void addLivro(Livro livro, int index) {
-        this.livros.add(index, livro);
+    public void addLivro(Livro livro) {
+        this.livros.add(livro);
+        System.out.println("Debug: "+ livro);
         this.valor += livro.getPreco();
-        this.numVendas++;
     }
 
     public void listarLivros(){
-        for ( Livro livro : this.livros){
-            livro.toString();
+        System.out.println("Detalhes da venda número " + numero + " para o cliente " + cliente + ":");
+        for (Livro livro : livros){
+            System.out.println(livro);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "numero=" + numero +
+                ", cliente='" + cliente + '\'' +
+                ", valor=" + valor +
+                '}';
     }
 }
